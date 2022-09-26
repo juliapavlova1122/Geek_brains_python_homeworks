@@ -5,16 +5,16 @@
 quarter_number = int(input('Введите номер четверти координат: '))
 
 if quarter_number == 1:
-    print('x ∈ [0, +∞); y ∈ [0, +∞)')
+    print('x ∈ (0, +∞); y ∈ (0, +∞)')
 
 if quarter_number == 2:
-    print('x ∈ (-∞, 0]; y ∈ [0, +∞)')
+    print('x ∈ (-∞, 0); y ∈ (0, +∞)')
 
 if quarter_number == 3:
-    print('x ∈ (-∞, 0]; y ∈ (-∞, 0]')
+    print('x ∈ (-∞, 0); y ∈ (-∞, 0)')
 
 if quarter_number == 4:
-    print('x ∈ [0, +∞); y ∈ (-∞, 0]')
+    print('x ∈ (0, +∞); y ∈ (-∞, 0)')
 
 else:
     print('Запустите программу заново и введите номер четверти координат от 1 до 4')
