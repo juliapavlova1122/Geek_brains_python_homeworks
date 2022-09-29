@@ -15,3 +15,14 @@ if day == 6 or day == 7:
 
 if (day >= 8):
     print("Запустите программу заново и введите число от 1 до 7 ")
+
+
+# num = int(input('Input the number of the day: '))
+
+# while num < 1 or num > 7:
+#     num = int(input('Wrong input. Try again here: '))
+# else: 
+#     if num == 6 or num == 7:
+#         print('Yes')
+#     else:
+#         print('No')

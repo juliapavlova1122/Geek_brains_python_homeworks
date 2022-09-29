@@ -17,21 +17,21 @@ y = int(input('Введите координату y: '))
 if x > 0 and y > 0:
     print('Точка находится в 1 четверти')
 
-if x < 0 and y > 0:
+elif x < 0 and y > 0:
     print('Точка находится во 2 четверти')
 
-if x < 0 and y < 0:
+elif x < 0 and y < 0:
     print('Точка находится в 3 четверти')
 
-if x > 0 and y < 0:
+elif x > 0 and y < 0:
     print('Точка находится в 4 четверти')
 
-if x == 0 and y != 0:
+elif x == 0 and y != 0:
     print('Точка находится на оси 0Y')
-if y == 0 and x != 0:
+elif y == 0 and x != 0:
     print('Точка находится на оси 0X')
 
-if x == 0 and y == 0:
+elif x == 0 and y == 0:
     print('Точка находится в начале координат')
 
 
