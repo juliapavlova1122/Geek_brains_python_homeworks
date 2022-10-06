@@ -11,4 +11,8 @@ for i in range(1, len(list1), 2):
     result_sum += list1[i] 
 print(result_sum)
 
+# 2 вариант
+# print(sum(list1[1::2]))
+
+
 
