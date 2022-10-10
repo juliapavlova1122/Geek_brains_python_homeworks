@@ -1,30 +1,55 @@
 # Задана натуральная степень k. Сформировать случайным образом список 
 # коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
-
 # Пример:
-
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 
-
-from random import randint, choice, uniform
+from random import randint, choice
 
 def polynomial_function(a, k, sign):     # функция задает многочлен и записывает его в текстовой файл. polynomial - многочлен.
 
-        with open("polynomial.txt", "w", encoding="utf-8") as my_f:
-            while k >= 1:
-                my_f.write(f"({a}x ** {k})){sign}")
-                k=k-1
-                a = round(uniform(0, 10), 2)
-                sign = choice('+-')
-            my_f.write(f" {a}\n")
+    with open("polynomial.txt", "w", encoding="utf-8") as my_file:
+        while k >= 1:
+            my_file.write(f"({a}x ** {k}){sign}")
+            k = k - 1
+            a = randint(0, 100)
+            sign = choice('+-')              
+        my_file.write(f" {a} = 0 \n")
+      
 for i in range(3):
-    SL = []                     # лист
-    SL.append(randint(0, 100))    # 3 числа выдаются в 3 списка
-    k = choice(SL)      # выбрал случайным образом 1 из 3 SL , k степень
-    sign = choice('+-') # выбрал случайным образом 1 из + / -
-    a = round(uniform(0, 10), 2) # a -  коэффициенты. uniform - случайное дробное число от и до. ,2 - округление
-    print(a,k,sign)
+    list_k = []                     
+    list_k.append(randint(1, 5))    
+    k = choice(list_k)      
+    sign = choice('+-') 
+    a = randint(0, 100) 
     polynomial_function(a,k,sign)
+
+path = 'polynomial.txt' 
+data = open(path, 'r') 
+for line in data: 
+    print(line) 
+
+
+# C  дробными числами и комментариями:
+# 
+#  from random import randint, choice, uniform
+
+# def polynomial_function(a, k, sign):     # функция задает многочлен и записывает его в текстовой файл. polynomial - многочлен.
+
+#         with open("polynomial.txt", "w", encoding="utf-8") as my_f:
+#             while k >= 1:
+#                 my_f.write(f"({a}x ** {k})){sign}")
+#                 k = k - 1
+#                 a = round(uniform(0, 100), 2)
+#                 sign = choice('+-')
+#             my_f.write(f" {a}\n")
+# for i in range(3):
+#     list_k = []                     # лист
+#     list_k.append(randint(0, 5))    # 3 числа выдаются в 3 списка
+#     k = choice(list_k)      # выбрал случайным образом 1 из 3 list_k , k степень
+#     sign = choice('+-') # выбрал случайным образом 1 из + / -
+#     a = round(uniform(0, 100), 2) # a -  коэффициенты. uniform - случайное дробное число от и до. ,2 - округление
+#     print(a,k,sign)
+#     polynomial_function(a,k,sign)
 
 
 
