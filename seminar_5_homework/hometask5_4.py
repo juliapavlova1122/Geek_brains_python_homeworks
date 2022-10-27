@@ -1,44 +1,48 @@
 # Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
 
+with open('file_encode.txt', 'w') as data:
+    data.write('AAAAAAAAAAAAAvvvvvvvvvv11111111')
 
-def encode_rle(txt):   # шифрование строки
-	encoding = "" 
-	i = 0
-	while i < len(txt):    # цикл подсчёта количества входжений символа с индексом i
-		count = 1
-		while i + 1 < len(txt) and txt[i] == txt[i + 1]:
-			count += 1
-			i += 1
-		encoding += str(count) + txt[i]    # добавляем в строку символ и количество его вхождений
-		i += 1
-	return encoding
+with open('file_encode.txt', 'r') as data:
+    string = data.readline()
 
-
-def decode_rle(data):   # расшифровка строки
-    decoding = ""
-    count = ""
-    for char in data:
-        if char.isdigit():    # если символ - число
-            count += char
-        else:                 # если не число, добавляем в строку
-            decoding += char * int(count) 
-            count = "" 
-    return decoding
-
-       
-def read_data(file):   # Получение данных из файла
-    with open(str(file), "r", encoding="UTF-8") as data:
-        input_string = data.read()
-    return input_string
+def rle_encode(decoded_string):
+    encoded_string = ''
+    count = 1
+    char = decoded_string[0]
+    for i in range(1, len(decoded_string)):
+        if decoded_string[i] == char:
+            count += 1
+        else:
+            encoded_string = encoded_string + str(count) + char
+            char = decoded_string[i]
+            count = 1
+            encoded_string = encoded_string + str(count) + char
+    return encoded_string
 
 
-input_text = "D:\\Обучение\\Практика\\Python\\Home_task5\\input_text.txt"   # исходный текст
-tx = 'D:\\Обучение\\Практика\\Python\\Home_task5\\encoded_input_text.txt'   # сжатый текст
-text1 = "D:\\Обучение\\Практика\\Python\\Home_task5\\decoded_text.txt"      # восстановленный текст
-print(read_data(input_text))  # исходный текст 
-print(encode_rle(read_data(input_text))) # сжатый текст
-with open(str(tx), "w", encoding="UTF-8") as data:
-    data.write(encode_rle(read_data(input_text)))
-print(decode_rle(read_data(tx)))   # восстановленный текст
-with open(str(text1), "w", encoding="UTF-8") as data:
-    data.write(decode_rle(read_data(tx)))
+def rle_decode(encoded_string):
+    decoded_string = ''
+    char_amount = ''
+    for i in range(len(encoded_string)):
+        if encoded_string[i].isdigit():
+            char_amount += encoded_string[i]
+        else:
+            decoded_string += encoded_string[i] * int(char_amount)
+        char_amount = ''
+    print(decoded_string)
+
+    return decoded_string
+
+
+with open('file_encode.txt', 'r') as file:
+    decoded_string = file.read()
+
+with open('file_decode.txt', 'w') as file:
+    encoded_string = rle_encode(decoded_string)
+    file.write(encoded_string)
+
+print('Decoded string: \t' + decoded_string)
+print('Encoded string: \t' + rle_encode(decoded_string))
+print(f'Compress ratio: \t{round(len(decoded_string) / len(encoded_string), 1)}')
+
