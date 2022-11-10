@@ -20,7 +20,7 @@ def interceptor(update, context):
 
 
 def main():
-    updater = Updater('5722868369:AAF3G0uYZpCZj2K7CgRuiqsn6IfP7KmANAg')
+    updater = Updater('token')
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
